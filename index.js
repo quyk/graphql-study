@@ -1,5 +1,10 @@
 const { ApolloServer, gql} = require("apollo-server");
 
+const perfis = [
+    { id: 1, nome: "Comum"},
+    { id: 2, nome: "Administrador" }
+];
+
 const usuarios = [
     {
         id: 1,
@@ -32,12 +37,17 @@ const typeDefs = gql`
     }
 
     type Usuario {
-        id: Int,
+        id: Int
         nome: String!
         email: String!
         idade: Int
         salario: Float
         vip: Boolean
+    }
+
+    type Perfil {
+        id: Int
+        nome: String
     }
 
     # Pontos de entradas da API!    
@@ -49,6 +59,8 @@ const typeDefs = gql`
         numerosMegaSena: [Int!]!
         usuarios: [Usuario]
         usuario(id: Int): Usuario
+        perfis: [Perfil]
+        perfil(id: Int): Perfil
     }
 `
 const resolvers = {
@@ -108,6 +120,15 @@ const resolvers = {
                 .filter(u => u.id === args.id)
 
             return selecionados ? selecionados[0] : null
+        },
+        perfis() {
+            return perfis
+        },
+        perfil(_, args) {
+            const selecionado = perfis
+                .filter(u => u.id === args.id)
+            
+            return selecionado ? selecionado[0] : null
         }
     }
 }
