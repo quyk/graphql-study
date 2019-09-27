@@ -32,7 +32,7 @@ const typeDefs = gql`
     }
 
     type Usuario {
-        id: ID,
+        id: Int,
         nome: String!
         email: String!
         idade: Int
@@ -48,6 +48,7 @@ const typeDefs = gql`
         precoEmDestaque: Produto
         numerosMegaSena: [Int!]!
         usuarios: [Usuario]
+        usuario(id: Int): Usuario
     }
 `
 const resolvers = {
@@ -101,6 +102,12 @@ const resolvers = {
         },
         usuarios() {
             return usuarios
+        },
+        usuario(_, args) {
+            const selecionados = usuarios
+                .filter(u => u.id === args.id)
+
+            return selecionados ? selecionados[0] : null
         }
     }
 }
