@@ -1,0 +1,50 @@
+{
+  #ola
+  #horaAtual
+  #usuarioLogado {
+  #  id nome email idade
+  #  salario vip
+  #}
+  #precoEmDestaque {
+  #  nome
+  #  preco
+  #  desconto
+  #  precoComDesconto
+  #}
+  #numerosMegaSena
+  #usuarios {
+  #  id nome email idade salario
+  #}
+  #usuario(id: 12) {
+  #  id nome email
+  #}
+  #perfis {
+  #  id  nome
+  #}
+  #perfil(id: 1) {
+  #  id nome
+  #}
+  
+  #usuarios {
+  #  id nome email
+  #  perfil {
+  #    id nome
+  #  } 
+  #}
+  
+  usuario(id: 2) {
+    ...usuarioCompleto
+  }
+  
+  usuarios {
+    ...usuarioCompleto
+  }
+  
+} # Write your query or mutation here
+
+fragment usuarioCompleto on Usuario {
+  id nome email email salario salario
+  perfil {
+    id nome
+  }
+}
