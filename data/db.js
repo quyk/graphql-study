@@ -11,7 +11,8 @@ const usuarios = [
         idade: 32,
         salario: 200,
         vip: true,
-        perfil_id: 1
+        perfil_id: 1,
+        status: 'Ativo'
     },
     {
         id: 2,
@@ -19,7 +20,8 @@ const usuarios = [
         email: "sales@gmail.com",
         idade: 18,
         vip: false,
-        perfil_id: 2
+        perfil_id: 2,
+        status: 'Inativo'
     },
     {
         id: 3,
@@ -28,7 +30,8 @@ const usuarios = [
         idade: 24,
         salario: 1500,
         vip: true,
-        perfil_id: 1
+        perfil_id: 1,
+        status: 'Bloqueado'
     }
 ]
 
